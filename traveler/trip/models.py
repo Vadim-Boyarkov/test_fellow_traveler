@@ -17,11 +17,16 @@ class Address(models.Model):
 
 class Trips(models.Model):
     """Модель поездки"""
+    author = models.ForeignKey(CustomUser,
+                               on_delete=models.CASCADE,
+                               verbose_name='Автор')
     starting_point = models.ManyToManyField("Address",related_name='trips',
                                             verbose_name='Откуда')
     end_point = models.ManyToManyField("Address",related_name='trips',
                                             verbose_name='Куда')
     date = models.DateTimeField()
-    cars = models.OneToOneField(CustomUser,
-                                on_delete=models.CASCADE,
-                                related_name='car')
+    price = models.DecimalField(max_digits=10, decimal_places=0)
+#   cars = models.OneToOneField(CustomUser.cars,
+#                                on_delete=models.CASCADE,
+#                                related_name='car')
+# Поле cars должно подтянуться с модели юзера
