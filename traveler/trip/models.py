@@ -20,9 +20,9 @@ class Trips(models.Model):
     author = models.ForeignKey(CustomUser,
                                on_delete=models.CASCADE,
                                verbose_name='Автор')
-    starting_point = models.ManyToManyField("Address",related_name='trips',
+    starting_point = models.ManyToManyField("Address",related_name='starting_point_trips',
                                             verbose_name='Откуда')
-    end_point = models.ManyToManyField("Address",related_name='trips',
+    end_point = models.ManyToManyField("Address",related_name='end_point_trips',
                                             verbose_name='Куда')
     date = models.DateTimeField()
     price = models.DecimalField(max_digits=10, decimal_places=0)
